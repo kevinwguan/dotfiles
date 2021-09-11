@@ -1,0 +1,194 @@
+# Logo key (4) or use mod with alt (1)
+set $mod Mod1
+set $super Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Color scheme
+set $bg       #282828
+set $fg       #d4be98
+set $red      #ea6962
+set $orange   #e78a4e
+set $green    #a9b665
+set $blue     #7daea3
+set $purple   #d3869b
+set $aqua     #89b482
+# Theming
+set $font 'Roboto Medium 12'
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Gruvbox-Material-Dark-HIDPI'
+    gsettings set $gnome-schema icon-theme 'Gruvbox-Material-Dark'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name $font
+}
+# Window decorations
+font $font
+client.focused          $orange     $orange     $bg     $orange     $orange
+client.focused_inactive $blue       $blue       $bg     $blue       $blue
+client.unfocused        $bg         $bg         $bg     $bg         $bg
+client.urgent           $red        $red        $bg     $red        $red
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+set $4k DP-4
+set $laptop eDP-1
+output $4k scale 2
+output $laptop pos 0 0
+output * bg ~/Pictures/Wallpaper.png fill
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    accel_profile adaptive
+    click_method clickfinger
+    drag disabled
+    drag_lock disabled
+}
+input type:pointer {
+    accel_profile flat
+}
+input type:tablet_tool {
+    tool_mode * absolute
+}
+# Variables
+default_border pixel 3
+default_floating_border normal 3
+floating_maximum_size 1280 x 720
+floating_minimum_size 1280 x 720
+floating_modifier $mod normal
+focus_wrapping workspace
+smart_borders on
+xwayland force scale 2
+# Defaults
+set $spotify env LD_PRELOAD=/usr/lib/spotify-adblock.so
+bindsym $mod+$super+0 exec $spotify spotify
+bindsym $mod+$super+1 exec firefox
+bindsym $mod+$super+2 exec thunderbird
+bindsym $mod+$super+3 exec thunar
+bindsym $mod+$super+4 exec emacs
+# Terminal emulator
+set $term alacritty
+set $opacity opacity 0.95
+bindsym $mod+Return exec $term
+for_window [app_id="Alacritty"] $opacity
+# Application launcher
+set $dark    \#282828
+set $light   \#d4be98
+set $dmenu dmenu -b -i -fn $font -nb $dark -nf $light -sb $light -sf $dark
+set $apps exec cat ~/gui | $dmenu | xargs swaymsg exec --
+set $menu dmenu_path | $dmenu | xargs swaymsg exec --
+bindsym $mod+space exec $apps
+bindsym $mod+Shift+space exec $menu
+# Screenshot
+bindsym $mod+p              exec grimshot --notify save active
+bindsym $mod+Shift+p        exec grimshot --notify save area
+bindsym $mod+$super+p       exec grimshot --notify save output
+bindsym $mod+Control+p      exec grimshot --notify save window
+bindsym $mod+Print          exec grimshot --notify copy active
+bindsym $mod+Shift+Print    exec grimshot --notify copy area
+bindsym $mod+$super+Print   exec grimshot --notify copy output
+bindsym $mod+Control+Print  exec grimshot --notify copy window
+# Media keys
+bindsym --locked XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym --locked XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym --locked XF86AudioMute exec amixer set Master toggle
+bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym --locked XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym --locked XF86AudioPlay exec playerctl --player=spotify play-pause
+bindsym --locked XF86AudioNext exec playerctl --player=spotify next
+bindsym --locked XF86AudioPrev exec playerctl --player=spotify previous
+# System
+bindsym $mod+r reload
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+w kill
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Control+q exec $swaylock
+bindsym $mod+Control+Delete exec systemctl suspend
+bindsym $mod+Escape exec swaynag -t warning \
+    -m 'Do you really want to exit sway?' \
+    -b 'Yes, exit sway' 'swaymsg exit'
+# Idle
+set $swaylock 'swaylock -f -e -c 282828'
+exec swayidle -w \
+    timeout 600 $swaylock \
+    timeout 3600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep $swaylock
+# Move through containers
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+# Move through workspaces
+bindsym $mod+Left focus output left
+bindsym $mod+Down workspace next
+bindsym $mod+Up workspace prev
+bindsym $mod+Right focus output right
+bindsym $mod+Shift+Left move workspace to output left
+#bindsym $mod+Shift+Down (possibly gaps)
+#bindsym $mod+Shift+Up (possibly gaps)
+bindsym $mod+Shift+Right move workspace to output right
+# Switch the current container between different layout styles
+bindsym $mod+Insert layout toggle split
+bindsym $mod+Shift+Insert layout toggle tabbed stacking
+bindsym $mod+equal floating toggle
+bindsym $mod+Shift+equal focus mode_toggle
+bindsym $mod+minus scratchpad show
+bindsym $mod+Shift+minus move scratchpad
+# Switch to workspace
+bindsym $mod+1 workspace 1-webs
+bindsym $mod+2 workspace 2-mail
+bindsym $mod+3 workspace 3-file
+bindsym $mod+4 workspace 4-code
+bindsym $mod+5 workspace 5-term
+bindsym $mod+6 workspace 6-chat
+bindsym $mod+7 workspace 7-draw
+bindsym $mod+8 workspace 8-note
+bindsym $mod+9 workspace 9-meta
+bindsym $mod+0 workspace 10-muse
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1-webs
+bindsym $mod+Shift+2 move container to workspace 2-mail
+bindsym $mod+Shift+3 move container to workspace 3-file
+bindsym $mod+Shift+4 move container to workspace 4-code
+bindsym $mod+Shift+5 move container to workspace 5-term
+bindsym $mod+Shift+6 move container to workspace 6-chat
+bindsym $mod+Shift+7 move container to workspace 7-draw
+bindsym $mod+Shift+8 move container to workspace 8-note
+bindsym $mod+Shift+9 move container to workspace 9-meta
+bindsym $mod+Shift+0 move container to workspace 10-muse
+# Workspace mapping
+workspace 1-webs output $4k $laptop
+workspace 2-mail output $4k $laptop
+workspace 3-file output $4k $laptop
+workspace 4-code output $4k $laptop
+workspace 5-term output $4k $laptop
+workspace 6-chat output $4k $laptop
+workspace 7-draw output $4k $laptop
+workspace 8-note output $4k $laptop
+workspace 9-meta output $4k $laptop
+workspace 10-muse output $laptop $4k
+# autostart
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec xrdb ~/.Xresources
+exec gammastep-indicator
+exec emacs --daemon
+exec autotiling
+# future implementation
+mode "custom" {
+    bindsym Caps_Lock mode "default"
+}
+bindsym $mod+Caps_Lock mode "custom"
+# Misc
+bar {
+    swaybar_command waybar
+}
+include /etc/sway/config.d/*
