@@ -8,13 +8,13 @@ set $up k
 set $right l
 # Color scheme
 set $bg       #282828
-set $fg       #d4be98
 set $red      #ea6962
-set $orange   #e78a4e
 set $green    #a9b665
+set $yellow   #e78a4e
 set $blue     #7daea3
-set $purple   #d3869b
-set $aqua     #89b482
+set $magenta  #d3869b
+set $cyan     #89b482
+set $fg       #d4be98
 # Theming
 set $font 'Roboto Medium 12'
 set $gnome-schema org.gnome.desktop.interface
@@ -26,9 +26,9 @@ exec_always {
 }
 # Window decorations
 font $font
-client.focused          $orange     $orange     $bg     $orange     $orange
+client.focused          $yellow     $yellow     $bg     $yellow     $yellow
 client.focused_inactive $blue       $blue       $bg     $blue       $blue
-client.unfocused        $bg         $bg         $bg     $bg         $bg
+client.unfocused        $bg         $bg         $fg     $bg         $bg
 client.urgent           $red        $red        $bg     $red        $red
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 set $4k DP-4
@@ -79,7 +79,7 @@ for_window [app_id="Alacritty"] $opacity
 # Application launcher
 set $dark    \#282828
 set $light   \#d4be98
-set $dmenu dmenu -b -i -fn $font -nb $dark -nf $light -sb $light -sf $dark
+set $dmenu dmenu -b -i -l 10 -fn $font -nb $dark -nf $light -sb $light -sf $dark
 set $apps exec cat ~/gui | $dmenu | xargs swaymsg exec --
 set $menu dmenu_path | $dmenu | xargs swaymsg exec --
 bindsym $mod+space exec $apps
@@ -185,6 +185,7 @@ exec autotiling
 # future implementation
 mode "custom" {
     bindsym Caps_Lock mode "default"
+    bindsym $mod+Caps_Lock mode "default"
 }
 bindsym $mod+Caps_Lock mode "custom"
 # Misc
