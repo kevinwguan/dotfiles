@@ -1,0 +1,8 @@
+bluetoothctl
+agent on
+default-agent
+scan on
+pair
+trust
+connect
+scan off

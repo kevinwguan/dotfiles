@@ -1,0 +1,5 @@
+iwctl
+device list
+station device scan
+station device get-networks
+station device connect SSID
