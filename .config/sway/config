@@ -58,8 +58,8 @@ input type:tablet_tool {
     tool_mode * absolute
 }
 # Variables
-default_border pixel 3
-default_floating_border normal 3
+default_border pixel 2
+default_floating_border normal 2
 floating_maximum_size 1280 x 720
 floating_minimum_size 1280 x 720
 floating_modifier $mod normal

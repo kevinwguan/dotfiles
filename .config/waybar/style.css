@@ -8,7 +8,7 @@
 
 window#waybar {
     background-color: #282828;
-    border-bottom: 3px solid #282828;
+    border-bottom: 2px solid #282828;
     color: #d4be98;
     transition-property: background-color;
     transition-duration: .5s;
@@ -32,18 +32,18 @@ window#waybar.solo {
     background-color: transparent;
     color: #d4be98;
     /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
+    box-shadow: inset 0 -2px transparent;
 }
 
 #workspaces button:hover {
     background: #282828;
-    box-shadow: inset 0 -3px #d4be98;
+    box-shadow: inset 0 -2px #d4be98;
 }
 
 #workspaces button.focused {
     color: #282828;
     background-color: #d4be98;
-    box-shadow: inset 0 -3px #282828;
+    box-shadow: inset 0 -2px #282828;
 }
 
 #workspaces button.urgent {
@@ -62,13 +62,13 @@ window#waybar.solo {
 #battery,
 #clock {
     padding: 0 5px;
-    margin: 0 3px;
+    margin: 0 2px;
     color: #d4be98;
 }
 
 #window,
 #workspaces {
-    margin: 0 3px;
+    margin: 0 2px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -107,7 +107,7 @@ label:focus {
 #mode {
     background-color: #7daea3;
     color: #282828;
-    border-bottom: 3px solid #d4be98;
+    border-bottom: 2px solid #d4be98;
 }
 
 #window {
