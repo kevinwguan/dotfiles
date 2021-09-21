@@ -116,16 +116,25 @@
 }, {
 	"position": "bottom",
 	"modules-left": [
-	    "custom/media",
-	],
-	"modules-center": [
 		"sway/window",
 	],
-	"modules-right": [
+	"modules-center": [
+	    "wlr/taskbar",
 	    "tray",
 	],
+	"modules-right": [
+	    "custom/media",
+	],
+	"wlr/taskbar": {
+        "format": "{icon}",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+	},
+	"tray": {
+		"spacing": 10
+	},
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{} {icon}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
@@ -136,7 +145,4 @@
         "exec": "python ~/.config/waybar/modules/mediaplayer.py --player spotify 2> /dev/null",
 		"on-click-right": "playerctl --player=spotify play-pause",
     },
-	"tray": {
-		"spacing": 10
-	},
 }]
