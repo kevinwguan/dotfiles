@@ -18,7 +18,7 @@ set $cyan     #89b482
 set $fg       #d4be98
 set $light   \#d4be98
 # Theming
-set $font 'Roboto Medium 12'
+set $font 'Roboto 12'
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Gruvbox-Material-Dark-HIDPI'
