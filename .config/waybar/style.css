@@ -105,9 +105,13 @@ label:focus {
 */
 
 #mode {
-    background-color: #ea6962;
+    background-color: #7daea3;
     color: #282828;
     border-bottom: 3px solid #d4be98;
+}
+
+#window {
+    color: #ea6962;
 }
 
 #custom-media.custom-spotify {
