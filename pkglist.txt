@@ -13,7 +13,6 @@ calibre
 cmatrix
 discord
 dmenu
-efibootmgr
 emacs
 exfatprogs
 fakeroot
@@ -23,9 +22,9 @@ flex
 gammastep
 gcc
 git
+gnome-disk-utility
 grim
 grml-zsh-config
-grub
 gvfs
 hexchat
 htop
@@ -77,6 +76,7 @@ python-scipy
 python-sqlalchemy
 python-tensorflow
 qt5ct
+refind
 ripgrep
 rsync
 rust
@@ -96,11 +96,11 @@ tlp
 tree
 ttf-roboto
 ttf-roboto-mono
+tumbler
 waybar
 wget
 wl-clipboard
 xarchiver
-xdg-user-dirs
 xorg-xev
 xorg-xrdb
 xournalpp

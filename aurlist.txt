@@ -3,9 +3,8 @@ autotiling
 grimshot
 gruvbox-material-gtk-theme-git
 gruvbox-material-icon-theme-git
-neovim-gruvbox-material-git
-neovim-lightline-git
-neovim-lightline-gruvbox-material-git
+mprime-bin
+notion-app
 paru
 postman-bin
 slack-desktop
@@ -14,6 +13,7 @@ spotify-adblock-git
 sway-hidpi-git
 swaybg-git
 ventoy-bin
+vim-gruvbox-material-git
 wlroots-hidpi-git
 xorg-xwayland-hidpi-git
 xorgproto-git
