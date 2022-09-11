@@ -35,6 +35,7 @@ def run_floating_layout():
         float_rules=[
             # Run the utility of `xprop` to see the wm class and name of an X client.
             *layout.Floating.default_float_rules,
+            Match(wm_class='xfce4-appfinder'),
             Match(wm_class='confirmreset'),  # gitk
             Match(wm_class='makebranch'),  # gitk
             Match(wm_class='maketag'),  # gitk

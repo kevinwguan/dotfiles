@@ -42,10 +42,12 @@ def run_sfactor():
 
 
 # What if everything was a dict?
+dgpu = "prime-run" + ' '
 hidpi = run_hidpi()
 sfactor = run_sfactor()
 terminal = guess_terminal(preference="alacritty")
 wallpaper = "~/Pictures/wallpaper/webb4k.png"
+bluetooth = "/dev_7C_58_CA_00_33_DB"
 # Colors
 colors = {
     "bg":      '#282828',
@@ -84,10 +86,12 @@ scratchpad = {
 # Keys only
 gui = {
     #"": "",
+    "grave": "rofi -show window",
     "1": "firefox",
     "2": "thunderbird",
     "3": hidpi+"thunar",
-    "grave": "rofi -show",
+    "space": "rofi -show drun",
+    "dgpu": dgpu+"rofi -show drun",
     "spotify": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
     "d-term": hidpi+"xfce4-terminal",
     "appfinder": hidpi+"xfce4-appfinder",
