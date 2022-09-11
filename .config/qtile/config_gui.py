@@ -86,12 +86,12 @@ scratchpad = {
 # Keys only
 gui = {
     #"": "",
-    "grave": "rofi -show window",
+    "grave": "rofi -show",
     "1": "firefox",
     "2": "thunderbird",
     "3": hidpi+"thunar",
-    "space": "rofi -show drun",
-    "dgpu": dgpu+"rofi -show drun",
+    "space": "rofi -show-icons -dpi 1 -show drun",
+    "dgpu": dgpu+"rofi -show-icons -dpi 1 -show drun",
     "spotify": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
     "d-term": hidpi+"xfce4-terminal",
     "appfinder": hidpi+"xfce4-appfinder",
