@@ -86,7 +86,7 @@ scratchpad = {
 # Keys only
 gui = {
     #"": "",
-    "grave": "rofi -show",
+    "grave": "rofi -show-icons -dpi 1 -show",
     "1": "firefox",
     "2": "thunderbird",
     "3": hidpi+"thunar",
