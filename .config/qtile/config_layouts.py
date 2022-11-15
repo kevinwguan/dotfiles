@@ -15,18 +15,21 @@ layout_theme = {
 def run_layouts():
     return [
         layout.MonadTall(**layout_theme),
+        layout.MonadThreeCol(**layout_theme),
+        layout.MonadWide(**layout_theme),
+        layout.Columns(**layout_theme),
         layout.Max(**layout_theme),
-        #layout.Columns(border_focus_stack=['#d75f5f', '#8f3d3d'], border_width=4),
-        # Try more layouts by unleashing below layouts.
-        # layout.Stack(num_stacks=2),
-        # layout.Bsp(),
-        # layout.Matrix(),
-        # layout.MonadWide(),
-        # layout.RatioTile(),
-        # layout.Tile(),
-        # layout.TreeTab(),
-        # layout.VerticalTile(),
-        # layout.Zoomy(),
+    # Try more layouts by unleashing below layouts.
+        #layout.Bsp(),
+        #layout.Matrix(),
+        #layout.RatioTile(),
+        #layout.Slice(),
+        #layout.Spiral(),
+        #layout.Stack(),
+        #layout.Tile(),
+        #layout.TreeTab(),
+        #layout.VerticalTile(),
+        #layout.Zoomy(),
     ]
 
 
@@ -36,6 +39,9 @@ def run_floating_layout():
             # Run the utility of `xprop` to see the wm class and name of an X client.
             *layout.Floating.default_float_rules,
             Match(wm_class='xfce4-appfinder'),
+            Match(wm_class='discord'),
+            Match(wm_class='Slack'),
+            Match(wm_class='zoom'),
             Match(wm_class='confirmreset'),  # gitk
             Match(wm_class='makebranch'),  # gitk
             Match(wm_class='maketag'),  # gitk

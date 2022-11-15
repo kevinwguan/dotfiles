@@ -24,7 +24,6 @@ def run_groups():
                     Match(wm_class='Slack'),
                     Match(wm_class='zoom'),
                 ],
-                layout="max",
             )
         else:
             y = Group(

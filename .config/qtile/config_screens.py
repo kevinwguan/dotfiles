@@ -35,6 +35,7 @@ def run_screens():
                         widgets=[
                             widget.WindowName(),
                         ],
+                        foreground=colors["cyan"],
                     ),
                     widget.Spacer(),
                     widget.Bluetooth(
@@ -66,7 +67,7 @@ def run_screens():
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
                     ),
                     widget.Sep(
-                        foreground=colors["cyan"],
+                        foreground=colors["red"],
                         linewidth=2*sfactor,
                     ),
                     widget.Systray(

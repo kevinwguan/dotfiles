@@ -58,9 +58,9 @@ def run_keys():
         Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
         Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
         Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
-        Key([], "XF86AudioPrev", lazy.spawn("playerctl previous")),
-        Key([], "XF86AudioPlay", lazy.spawn("playerctl play-pause")),
-        Key([], "XF86AudioNext", lazy.spawn("playerctl next")),
+        Key([], "XF86AudioPrev", lazy.spawn("playerctl --player=rhythmbox previous")),
+        Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=rhythmbox play-pause")),
+        Key([], "XF86AudioNext", lazy.spawn("playerctl --player=rhythmbox next")),
         Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
         Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
 
