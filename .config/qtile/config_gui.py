@@ -45,7 +45,7 @@ def run_sfactor():
 dgpu = "prime-run" + ' '
 hidpi = run_hidpi()
 sfactor = run_sfactor()
-terminal = guess_terminal(preference="alacritty")
+terminal = guess_terminal(preference="kitty")
 wallpaper = "~/Pictures/wallpaper/webb4k.png"
 bluetooth = "/dev_7C_58_CA_00_33_DB"
 # Colors
@@ -61,15 +61,15 @@ colors = {
 }
 # Groups (but not dict...)
 groups_item = [
+    "",
     "",
     "",
-    "",
-    "",
-    "",
-    "",
     "",
     "",
-    "",
+    "",
+    "",
+    "",
+    "",
     "",
 ]
 # Keys and Groups
@@ -81,23 +81,27 @@ scratchpad = {
     "htop": terminal+' '+"--hold -e htop",
     "nvidia": hidpi+"nvidia-settings",
     "pavucontrol": hidpi+"pavucontrol",
-    "rhythmbox": hidpi+"rhythmbox",
+    "spotify": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
+    "notion": "notion-app",
 }
 # Keys only
 gui = {
     #"": "",
-    "grave": "rofi -show-icons -dpi 1 -show",
-    "1": "firefox",
-    "2": "thunderbird",
-    "3": hidpi+"thunar",
-    "space": "rofi -show-icons -dpi 1 -show drun",
-    "dgpu": dgpu+"rofi -show-icons -dpi 1 -show drun",
-    "spotify": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
     "d-term": hidpi+"xfce4-terminal",
     "appfinder": hidpi+"xfce4-appfinder",
     "display": hidpi+"xfce4-display-settings --minimal",
     "screenshooter": hidpi+"xfce4-screenshooter",
     "logout": hidpi+"xfce4-session-logout",
     "lock": hidpi+"xflock4",
+    #"": "",
+    "grave": "rofi -show-icons -dpi 1 -show",
+    "0": "emacsclient -nc",
+    "1": hidpi+"thunar Downloads",
+    "2": "firefox",
+    "3": "thunderbird",
+    "4": hidpi+"zotero",
+    "5": hidpi+"virt-manager",
+    "space": "rofi -show-icons -dpi 1 -show drun",
+    "dgpu": dgpu+"rofi -show-icons -dpi 1 -show drun",
     #"": "",
 }

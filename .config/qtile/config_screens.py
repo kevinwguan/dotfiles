@@ -37,6 +37,7 @@ def run_screens():
                         ],
                         foreground=colors["cyan"],
                     ),
+                    widget.WindowCount(fmt="[{}]"),
                     widget.Spacer(),
                     widget.Bluetooth(
                         hci=bluetooth,
@@ -50,14 +51,14 @@ def run_screens():
                     widget.Volume(
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
                     ),
-                    widget.Backlight(
-                        backlight_name="intel_backlight",
-                        fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
-                    ),
-                    widget.Battery(
-                        format="{percent:2.0%}",
-                        fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
-                    ),
+                    #widget.Backlight(
+                    #    backlight_name="intel_backlight",
+                    #    fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
+                    #),
+                    #widget.Battery(
+                    #    format="{percent:2.0%}",
+                    #    fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
+                    #),
                     widget.Clock(
                         format="%Y-0%m-%d %a",
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),

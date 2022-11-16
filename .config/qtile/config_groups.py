@@ -9,17 +9,12 @@ def run_groups():
     for i, j in enumerate(groups_item):
         k = i + 1
         x = str(k % 10)
-        if k == 2:
-            y = Group(
-                x,
-                label=' '.join((x, j)),
-                matches=[Match(wm_class='thunderbird')],
-            )
-        elif k == 6:
+        if k == 6:
             y = Group(
                 x,
                 label=' '.join((x, j)),
                 matches=[
+                    Match(wm_class='Steam'),
                     Match(wm_class='discord'),
                     Match(wm_class='Slack'),
                     Match(wm_class='zoom'),
@@ -96,10 +91,18 @@ def config_scratchpad(groups):
                 warp_pointer=False,
             ),
 
-            # rhythombox
+            # spotify
             DropDown(
-                "rhythmbox",
-                scratchpad["rhythmbox"],
+                "spotify",
+                scratchpad["spotify"],
+                x=0, y=0, width=1, height=1,
+                warp_pointer=False,
+            ),
+
+            # notion
+            DropDown(
+                "notion",
+                scratchpad["notion"],
                 x=0, y=0, width=1, height=1,
                 warp_pointer=False,
             ),

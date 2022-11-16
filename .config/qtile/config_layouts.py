@@ -8,28 +8,29 @@ from libqtile.config import Match
 layout_theme = {
     "border_focus": colors["red"],
     "border_normal": colors["bg"],
+    "border_width" : 2*sfactor,
     "margin": 10*sfactor,
 }
 
 
 def run_layouts():
     return [
-        layout.MonadTall(**layout_theme),
-        layout.MonadThreeCol(**layout_theme),
         layout.MonadWide(**layout_theme),
-        layout.Columns(**layout_theme),
-        layout.Max(**layout_theme),
+        layout.MonadTall(**layout_theme),
+        #layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
-        #layout.Bsp(),
-        #layout.Matrix(),
-        #layout.RatioTile(),
-        #layout.Slice(),
-        #layout.Spiral(),
-        #layout.Stack(),
-        #layout.Tile(),
-        #layout.TreeTab(),
-        #layout.VerticalTile(),
-        #layout.Zoomy(),
+        #layout.MonadThreeCol(**layout_theme),
+        #layout.Columns(**layout_theme),
+        #layout.Bsp(**layout_theme),
+        #layout.Matrix(**layout_theme),
+        #layout.RatioTile(**layout_theme),
+        #layout.Slice(**layout_theme),
+        #layout.Spiral(**layout_theme),
+        #layout.Stack(**layout_theme),
+        #layout.Tile(**layout_theme),
+        #layout.TreeTab(**layout_theme),
+        #layout.VerticalTile(**layout_theme),
+        #layout.Zoomy(**layout_theme),
     ]
 
 
@@ -39,6 +40,7 @@ def run_floating_layout():
             # Run the utility of `xprop` to see the wm class and name of an X client.
             *layout.Floating.default_float_rules,
             Match(wm_class='xfce4-appfinder'),
+            Match(wm_class='Steam'),
             Match(wm_class='discord'),
             Match(wm_class='Slack'),
             Match(wm_class='zoom'),

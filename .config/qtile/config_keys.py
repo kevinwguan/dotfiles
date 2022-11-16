@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
-from config_gui import gui
+from config_gui import gui, colors
 from libqtile.config import Key, Click, Drag
 from libqtile.lazy import lazy
+from libqtile import extension
 
 
 mod = "mod1"
@@ -40,45 +41,48 @@ def run_keys():
             lazy.layout.toggle_split(),
             desc="Toggle between split and unsplit sides of stack",
         ),
-        Key([logo], "Return", lazy.spawn(gui["d-term"]), desc="Launch terminal"),
+        Key([logo, "control"], "Return", lazy.spawn(gui["d-term"]), desc="Launch terminal"),
         # Toggle between different layouts as defined below
         Key([logo], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+        Key([logo, "shift"], "Tab", lazy.prev_layout(), desc="Toggle between layouts"),
         Key([logo], "w", lazy.window.kill(), desc="Kill focused window"),
         Key([logo, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([logo, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-        Key([logo], "r", lazy.spawn(gui["appfinder"]), desc="Spawn a command"),
+        #Key([logo], "r", lazy.spawn(gui["appfinder"]), desc="Spawn a command"),
 
         # System
-        Key([mod], "Tab", lazy.screen.toggle_group(), desc=""),
-        Key([mod, "shift"], "equal", lazy.window.toggle_floating(), desc=""),
-        Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc=""),
-        Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
-
-        # Media
-        Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
-        Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
-        Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
-        Key([], "XF86AudioPrev", lazy.spawn("playerctl --player=rhythmbox previous")),
-        Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=rhythmbox play-pause")),
-        Key([], "XF86AudioNext", lazy.spawn("playerctl --player=rhythmbox next")),
-        Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
-        Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
-
-        # Speed-Dial
-        Key([mod], "grave", lazy.spawn(gui["grave"]), desc=""),
-        Key([logo], "1", lazy.spawn(gui["1"]), desc=""),
-        Key([logo], "2", lazy.spawn(gui["2"]), desc=""),
-        Key([logo], "3", lazy.spawn(gui["3"]), desc=""),
-        Key([logo], "space", lazy.spawn(gui["space"]), desc=""),
-        Key([logo, "control"], "space", lazy.spawn(gui["dgpu"]), desc=""),
-        Key([logo], "equal", lazy.spawn(gui["spotify"])),
         Key([logo], "p", lazy.spawn(gui["display"])),
         Key([], "Print", lazy.spawn(gui["screenshooter"])),
         Key([mod, "control"], "Delete", lazy.spawn(gui["logout"])),
         Key([mod, "control"], "l", lazy.spawn(gui["lock"]), desc="Lock Qtile"),
+        Key([mod], "Tab", lazy.screen.toggle_group(), desc=""),
+        Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc=""),
+        Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc=""),
+        Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
+        # Media
+        Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
+        Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 5%-")),
+        Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 5%+")),
+        Key([], "XF86AudioPrev", lazy.spawn("playerctl --player=rhythmbox,spotify previous")),
+        Key([], "XF86AudioPlay", lazy.spawn("playerctl --player=rhythmbox,spotify play-pause")),
+        Key([], "XF86AudioNext", lazy.spawn("playerctl --player=rhythmbox,spotify next")),
+        Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 5%-")),
+        Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl set +5%")),
+        # Speed-Dial
+        Key([mod], "grave", lazy.spawn(gui["grave"]), desc=""),
+        Key([logo], "0", lazy.spawn(gui["0"]), desc=""),
+        Key([logo], "1", lazy.spawn(gui["1"]), desc=""),
+        Key([logo], "2", lazy.spawn(gui["2"]), desc=""),
+        Key([logo], "3", lazy.spawn(gui["3"]), desc=""),
+        Key([logo], "4", lazy.spawn(gui["4"]), desc=""),
+        Key([logo], "5", lazy.spawn(gui["5"]), desc=""),
+        Key([logo], "space", lazy.spawn(gui["space"]), desc=""),
+        Key([logo, "control"], "space", lazy.spawn(gui["dgpu"]), desc=""),
     ]
     config_keys_group(keys)
     config_keys_scratchpad(keys)
+    config_keys_dmenu(keys)
+
     return keys
 
 
@@ -110,7 +114,22 @@ def config_keys_scratchpad(keys):
         Key([mod, "control"], '3', lazy.group['scratchpad'].dropdown_toggle('htop')),
         Key([mod, "control"], '4', lazy.group['scratchpad'].dropdown_toggle('nvidia')),
         Key([mod], 'minus', lazy.group['scratchpad'].dropdown_toggle('pavucontrol')),
-        Key([mod], 'equal', lazy.group['scratchpad'].dropdown_toggle('rhythmbox')),
+        Key([mod], 'equal', lazy.group['scratchpad'].dropdown_toggle('spotify')),
+        Key([logo], 'Return', lazy.group['scratchpad'].dropdown_toggle('notion')),
+    ])
+
+
+def config_keys_dmenu(keys):
+    keys.extend([
+        Key(['mod4'], 'r', lazy.run_extension(extension.DmenuRun(
+            dmenu_prompt=">",
+            #dmenu_font="Andika-8",
+            background=colors["bg"],
+            foreground=colors["fg"],
+            selected_background=colors["bg"],
+            selected_foreground=colors["yellow"],
+            #dmenu_height=24,  # Only supported by some dmenu forks
+        ))),
     ])
 
 
