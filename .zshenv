@@ -4,8 +4,7 @@ export MAKEFLAGS="-j$(nproc)"
 # Java programs
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-# HiDPI
+# Appearance
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-
-# Qt
 export QT_QPA_PLATFORMTHEME=qt5ct
+export GTK_THEME=Adwaita:dark
