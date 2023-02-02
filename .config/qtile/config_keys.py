@@ -41,14 +41,14 @@ def run_keys():
             lazy.layout.toggle_split(),
             desc="Toggle between split and unsplit sides of stack",
         ),
-        Key([logo, "control"], "Return", lazy.spawn(gui["d-term"]), desc="Launch terminal"),
+        Key([logo], "Return", lazy.spawn(gui["d-term"]), desc="Launch terminal"),
         # Toggle between different layouts as defined below
         Key([logo], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
         Key([logo, "shift"], "Tab", lazy.prev_layout(), desc="Toggle between layouts"),
         Key([logo], "w", lazy.window.kill(), desc="Kill focused window"),
         Key([logo, "control"], "r", lazy.reload_config(), desc="Reload the config"),
         Key([logo, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-        #Key([logo], "r", lazy.spawn(gui["appfinder"]), desc="Spawn a command"),
+        Key([logo], "r", lazy.spawn(gui["appfinder"]), desc="Spawn a command"),
 
         # System
         Key([logo], "p", lazy.spawn(gui["display"])),
@@ -76,6 +76,7 @@ def run_keys():
         Key([logo], "3", lazy.spawn(gui["3"]), desc=""),
         Key([logo], "4", lazy.spawn(gui["4"]), desc=""),
         Key([logo], "5", lazy.spawn(gui["5"]), desc=""),
+        Key([logo], "6", lazy.spawn(gui["6"]), desc=""),
         Key([logo], "space", lazy.spawn(gui["space"]), desc=""),
         Key([logo, "control"], "space", lazy.spawn(gui["dgpu"]), desc=""),
     ]
@@ -115,13 +116,13 @@ def config_keys_scratchpad(keys):
         Key([mod, "control"], '4', lazy.group['scratchpad'].dropdown_toggle('nvidia')),
         Key([mod], 'minus', lazy.group['scratchpad'].dropdown_toggle('pavucontrol')),
         Key([mod], 'equal', lazy.group['scratchpad'].dropdown_toggle('spotify')),
-        Key([logo], 'Return', lazy.group['scratchpad'].dropdown_toggle('notion')),
+        Key([mod, "shift"], 'equal', lazy.group['scratchpad'].dropdown_toggle('itunes')),
     ])
 
 
 def config_keys_dmenu(keys):
     keys.extend([
-        Key(['mod4'], 'r', lazy.run_extension(extension.DmenuRun(
+        Key([logo], 'd', lazy.run_extension(extension.DmenuRun(
             dmenu_prompt=">",
             #dmenu_font="Andika-8",
             background=colors["bg"],

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from config_gui import colors, sfactor, wallpaper, bluetooth
+from config_gui import colors, sfactor, wallpaper
 from libqtile import bar, widget
 from libqtile.config import Screen
 
@@ -19,30 +19,20 @@ def run_screens():
     screens = []
     screens.append(
         Screen(
-            bottom=bar.Bar(
+            top=bar.Bar(
                 [
-                    widget.CurrentLayoutIcon(
-                        scale=2/3,
-                        background=colors["blue"],
-                    ),
+                    widget.CurrentLayoutIcon(scale=2/3, background=colors["magenta"]),
                     widget.GroupBox(
                         highlight_method="text",
                         active=colors["green"],
-                        this_current_screen_border=colors["magenta"],
-                        visible_groups=[str(x) for x in range(10)],
+                        this_current_screen_border=colors["red"],
                     ),
-                    widget.WidgetBox(
-                        widgets=[
-                            widget.WindowName(),
-                        ],
-                        foreground=colors["cyan"],
-                    ),
-                    widget.WindowCount(fmt="[{}]"),
+                    widget.WindowCount(fmt="[{}]", foreground=colors["cyan"]),
                     widget.Spacer(),
-                    widget.Bluetooth(
-                        hci=bluetooth,
-                        fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"])
+                    widget.Systray(
+                        icon_size=16*sfactor,
                     ),
+                    widget.Spacer(),
                     widget.Wlan(
                         format="{essid:0.6} ({percent:2.0%})",
                         max_chars=13,
@@ -51,14 +41,14 @@ def run_screens():
                     widget.Volume(
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
                     ),
-                    #widget.Backlight(
-                    #    backlight_name="intel_backlight",
-                    #    fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
-                    #),
-                    #widget.Battery(
-                    #    format="{percent:2.0%}",
-                    #    fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
-                    #),
+                    widget.Backlight(
+                        backlight_name="intel_backlight",
+                        fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
+                    ),
+                    widget.Battery(
+                        format="{percent:2.0%}",
+                        fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
+                    ),
                     widget.Clock(
                         format="%Y-0%m-%d %a",
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
@@ -67,13 +57,7 @@ def run_screens():
                         format="%I:%M:%S %p",
                         fmt="{}"+' '+"<span foreground='{}'></span>".format(colors["yellow"]),
                     ),
-                    widget.Sep(
-                        foreground=colors["red"],
-                        linewidth=2*sfactor,
-                    ),
-                    widget.Systray(
-                        icon_size=16*sfactor,
-                    ),
+                    widget.TextBox("", foreground=colors["blue"]),
                 ],
                 24*sfactor,
                 background=colors["bg"],

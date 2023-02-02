@@ -1,9 +1,11 @@
-android-studio
 auto-cpufreq
-checkra1n-cli
+gitflow-avh
+jetbrains-toolbox
 notion-app
 paru
-pycharm-professional
+postman-bin
+quickemu
+quickgui-bin
 slack-desktop
 spotify
 spotify-adblock-git
@@ -13,6 +15,5 @@ ventoy-bin
 vim-airline-gruvbox-git
 vim-gruvbox-git
 webex-bin
-yay
 zoom
 zotero-bin

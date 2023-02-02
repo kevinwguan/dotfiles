@@ -17,7 +17,7 @@ def run_layouts():
     return [
         layout.MonadWide(**layout_theme),
         layout.MonadTall(**layout_theme),
-        #layout.Max(**layout_theme),
+        layout.Max(**layout_theme),
     # Try more layouts by unleashing below layouts.
         #layout.MonadThreeCol(**layout_theme),
         #layout.Columns(**layout_theme),
@@ -39,11 +39,9 @@ def run_floating_layout():
         float_rules=[
             # Run the utility of `xprop` to see the wm class and name of an X client.
             *layout.Floating.default_float_rules,
-            Match(wm_class='xfce4-appfinder'),
-            Match(wm_class='Steam'),
-            Match(wm_class='discord'),
-            Match(wm_class='Slack'),
             Match(wm_class='zoom'),
+            Match(wm_class='blueberry.py'),
+            Match(wm_class='xfce4-appfinder'),
             Match(wm_class='confirmreset'),  # gitk
             Match(wm_class='makebranch'),  # gitk
             Match(wm_class='maketag'),  # gitk

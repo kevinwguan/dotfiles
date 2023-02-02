@@ -99,10 +99,10 @@ def config_scratchpad(groups):
                 warp_pointer=False,
             ),
 
-            # notion
+            # itunes
             DropDown(
-                "notion",
-                scratchpad["notion"],
+                "itunes",
+                scratchpad["itunes"],
                 x=0, y=0, width=1, height=1,
                 warp_pointer=False,
             ),

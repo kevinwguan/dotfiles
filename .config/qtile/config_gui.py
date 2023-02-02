@@ -5,11 +5,12 @@ from libqtile import hook
 from libqtile.utils import guess_terminal
 
 
+"""Only file to modify."""
 # Variables
 fhd = 120
 qhd = 192
 dpi = subprocess.run(
-    "xfconf-query -c xsettings -p /Xft/DPI",
+    "cat ~/dpi",
     capture_output=True,
     shell=True,
 )
@@ -42,12 +43,12 @@ def run_sfactor():
 
 
 # What if everything was a dict?
+"""Look at pkglist | aurlist"""
 dgpu = "prime-run" + ' '
 hidpi = run_hidpi()
 sfactor = run_sfactor()
 terminal = guess_terminal(preference="kitty")
-wallpaper = "~/Pictures/wallpaper/webb4k.png"
-bluetooth = "/dev_7C_58_CA_00_33_DB"
+wallpaper = "/usr/share/backgrounds/archlinux/simple.png"
 # Colors
 colors = {
     "bg":      '#282828',
@@ -65,11 +66,11 @@ groups_item = [
     "",
     "",
     "",
-    "",
-    "",
-    "",
-    "",
     "",
+    "",
+    "",
+    "",
+    "",
     "",
 ]
 # Keys and Groups
@@ -82,7 +83,7 @@ scratchpad = {
     "nvidia": hidpi+"nvidia-settings",
     "pavucontrol": hidpi+"pavucontrol",
     "spotify": "env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify",
-    "notion": "notion-app",
+    "itunes": hidpi+"rhythmbox",
 }
 # Keys only
 gui = {
@@ -95,12 +96,13 @@ gui = {
     "lock": hidpi+"xflock4",
     #"": "",
     "grave": "rofi -show-icons -dpi 1 -show",
-    "0": "emacsclient -nc",
-    "1": hidpi+"thunar Downloads",
+    "0": "notion-app",
+    "1": hidpi+"thunar",
     "2": "firefox",
     "3": "thunderbird",
     "4": hidpi+"zotero",
     "5": hidpi+"virt-manager",
+    "6": "timeshift-launcher",
     "space": "rofi -show-icons -dpi 1 -show drun",
     "dgpu": dgpu+"rofi -show-icons -dpi 1 -show drun",
     #"": "",
